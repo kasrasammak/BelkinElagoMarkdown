@@ -1,5 +1,5 @@
 ---
-title: "SurveyDataReport"
+title: "Belkin and Elago Client Report"
 author: "Kasra Sammak"
 date: "06/02/2020"
 output: html_document
@@ -17,7 +17,9 @@ surveyData <- read.csv("data/surveyBelkinElago.csv", sep=";", dec =",")
 surveyData <- subset(surveyData, brand != " ")
 
 ```
-<p> Hi this is my plot </p>
+<br><br>
+<div style="display:flex; flex-direction:row;"> 
+<div style="width:200px;position:relative;top:120px">This is a rather simple plot, explaining how many people have what salary by Brand. From this data alone we can at least glean that generally there are more people at Belkin than at Elago. For every salary range, there are more people at Belkin with that Salary than at Elago.</div>
 ```{r, echo=FALSE}
 #call ggplot
 c <- ggplot(surveyData, aes(salary, fill = brand))
@@ -28,7 +30,8 @@ c  + geom_histogram(bins=100) +
   theme_dark() +
   labs(title = "Number of People per Salary at Belkin and Elago", subtitle = "A Histographical Representation")
 ```
-<p> This is a rather simple plot, explaining how many people have what salary by Brand </p>
+</div>
+<div style="display: flex;flex-direction:row;"><div style="width:200px;position:relative;top:120px"> Here we use a scatter plot with two variables, age and credit. We can glean a little more from this plot as we see that there are more older (above 55) at Belkin than at Elago. The credit distribution amongst the age, on the other hand, is rather even.</div>
 ```{r, echo=FALSE}
 #scatter (2 variables)
 d <- ggplot(data=surveyData, aes(x = age, y = credit, colour = brand))
@@ -39,3 +42,5 @@ d +
   labs(title = "Credit score per Age at Belkin and Elago", 
        subtitle = "A Scatter Plot Representation")
 ```
+</div>
+
